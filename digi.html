@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stylish Digital Clock</title>
+</head>
+<body>
+    <h1 id="title">Stylish Digital Clock</h1>
+    <div id="clock"></div>
+
+    <script>
+        // Function to update the clock
+        function updateClock() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            const seconds = now.getSeconds().toString().padStart(2, '0');
+            const currentTime = `${hours}:${minutes}:${seconds}`;
+            
+            document.getElementById('clock').textContent = currentTime;
+        }
+
+        // Apply styles dynamically using JavaScript
+        const bodyStyle = document.body.style;
+        bodyStyle.margin = "0";
+        bodyStyle.padding = "0";
+        bodyStyle.height = "100vh";
+        bodyStyle.display = "flex";
+        bodyStyle.flexDirection = "column";
+        bodyStyle.alignItems = "center";
+        bodyStyle.justifyContent = "center";
+        bodyStyle.textAlign = "center";
+        bodyStyle.fontFamily = "'Courier New', monospace";
+        bodyStyle.background = "linear-gradient(135deg, #8e44ad, #3498db)";
+        bodyStyle.color = "white";
+
+        const titleStyle = document.getElementById('title').style;
+        titleStyle.marginBottom = "20px";
+        titleStyle.fontSize = "36px";
+        titleStyle.textShadow = "2px 2px 4px rgba(0, 0, 0, 0.5)";
+
+        const clockStyle = document.getElementById('clock').style;
+        clockStyle.fontSize = "70px";
+        clockStyle.fontWeight = "bold";
+        clockStyle.textShadow = "3px 3px 6px rgba(0, 0, 0, 0.7)";
+        clockStyle.border = "4px solid white";
+        clockStyle.padding = "20px 40px";
+        clockStyle.borderRadius = "15px";
+        clockStyle.animation = "glow 1.5s infinite alternate";
+
+        // Glow effect keyframes using JavaScript
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `
+            @keyframes glow {
+                from {
+                    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+                }
+                to {
+                    box-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 0.9);
+                }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        // Initialize and start the clock
+        setInterval(updateClock, 1000);
+        updateClock(); // Run once immediately
+    </script>
+</body>
+</html>
